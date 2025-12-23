@@ -1,14 +1,20 @@
 import json
+import os
 from config import *
 from flask import Flask, jsonify, request, render_template
 
-app = Flask(__name__)
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-with open('form.json', 'r', encoding='utf-8-sig') as f:
+form_path = os.path.join(BASE_DIR, 'form.json')
+living_path = os.path.join(BASE_DIR, 'living.json')
+
+with open(form_path, 'r', encoding='utf-8-sig') as f:
     form_results_json = json.load(f)
 
-with open('living.json', 'r', encoding='utf-8-sig') as f:
+with open(living_path, 'r', encoding='utf-8-sig') as f:
     living = json.load(f)
+
+app = Flask(__name__)
 
 def form_res_into_dct(data):
     person_dict = {}
