@@ -19,7 +19,7 @@ def form_res_into_dct(data):
                 person_results[sublist[i+1][0]] = points[sublist[i+1][1]]
             else:
                 person_results[sublist[i+1][0]] = sublist[i+1][1]
-        name = sublist[0][1].replace('ё', 'е')
+        name = sublist[0][1].replace('ё', 'е').strip()
         person_dict[name] = person_results
     return person_dict
 
@@ -84,7 +84,7 @@ def points_for_person(name, neighbour, form_results):
 def find_fitting_room(name):
     form_results = form_res_into_dct(form_results_json)
 
-    name = name.replace('ё', 'е')
+    name = name.replace('ё', 'е').strip()
     
     # Проверяем, есть ли имя в данных
     if name not in form_results:

@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: flask-dormitory-app
+    env: python
+    buildCommand: ""
+    startCommand: gunicorn flask_app:app
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
